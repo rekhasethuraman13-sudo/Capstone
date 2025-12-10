@@ -1,0 +1,15 @@
+Ingest — runners that accept PDFs, DOCX, TXT, images (OCR), and metadata.
+
+Preprocess & chunk — extract text, normalize, split into chunks with overlap, attach provenance metadata.
+
+Embed & store — call text-embedding-3-large to embed each chunk; upsert into Chroma collection with metadata.
+
+Retrieve — on query, embed query, perform top-K ANN search in Chroma, return ranked chunks + provenance.
+
+RAG generation — feed retrieved chunks into an LLM (GPT-4o/GPT-4.1) via a carefully constructed prompt that enforces grounding and structured output.
+
+Post-process — validate LLM response with Pydantic schema; sanitize outputs; log evidence; optionally re-run if schema fails or hallucination detected.
+
+Guardrails & monitoring — content filters, rate limits, relevance thresholds, explainability, human-in-the-loop for high-risk responses.
+
+CI/CD & infra — automated tests, containerized services, DB backups, vector pruning/retention policy, metrics & alerting.
