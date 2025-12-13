@@ -27,7 +27,6 @@ EMBEDDING_MODEL = "text-embedding-3-small"  # keep consistent with existing DB (
 # ---------------------------
 # Replace the string below with your key for local testing only.
 																													
-os.environ["OPENAI_API_KEY"] = "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"
 
 # ---------------------------
 # Guardrail helpers (defined before UI usage)
